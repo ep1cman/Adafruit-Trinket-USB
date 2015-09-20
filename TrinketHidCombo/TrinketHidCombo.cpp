@@ -326,3 +326,8 @@ char Trinket_Hid_Combo::isConnected()
 {
 	return usb_hasCommed;
 }
+
+void Trinket_Hid_Combo::wake()
+{
+	void wake_up_signal();
+}

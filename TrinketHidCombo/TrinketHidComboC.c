@@ -54,6 +54,32 @@ void usbBegin()
 	sei();
 }
 
+void wake_up_signal()
+{
+  cli(); // Disable interrupts
+
+  //Store current pin state
+  char ps_p = PORTB;
+  char ps_ddr = DDRB;
+
+  // USB+ = 1   USB- = 0  - K state
+  PORTB |=(1<<USB_CFG_DPLUS_BIT);
+  PORTB &= ~(1<<USB_CFG_DMINUS_BIT);
+  DDRB |= (1<<USB_CFG_DPLUS_BIT)|(1<<USB_CFG_DMINUS_BIT);
+  _delay_ms(100);
+  
+  // USB+ = 0  USB- = 1  - J state
+  PORTB ^=(1<<USB_CFG_DPLUS_BIT);
+  PORTB ^=(1<<USB_CFG_DMINUS_BIT);
+  _delay_ms(3);
+  
+  //Return the port to the state it was before
+  PORTB =ps_p;
+  DDRB = ps_ddr;
+
+  sei(); // Re-enable interrupts
+}
+
 void usbPollWrapper()
 {
 	usbPoll();

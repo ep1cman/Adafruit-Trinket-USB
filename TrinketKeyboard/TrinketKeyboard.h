@@ -59,6 +59,9 @@ class Trinket_Keyboard : public Print
 		// returns the state of the three LEDs on a keyboard (caps/num/scroll lock)
 		uint8_t getLEDstate();
 
+		// Wakes a connected PC from sleep
+		void wake();
+
 		// inherit from "Print", these two write functions are implemented
 		virtual size_t write(uint8_t);
 		using Print::write;

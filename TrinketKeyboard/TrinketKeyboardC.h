@@ -33,6 +33,7 @@ extern uint8_t led_state;
 extern uint8_t report_buffer[8];
 
 void usbBegin();
+void wake_up_signal();
 void usbPollWrapper();
 void usbReportSend();
 

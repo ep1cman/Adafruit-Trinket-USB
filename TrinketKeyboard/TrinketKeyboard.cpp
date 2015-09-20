@@ -291,3 +291,8 @@ char Trinket_Keyboard::isConnected()
 {
 	return usb_hasCommed;
 }
+
+void Trinket_Keyboard::wake()
+{
+	void wake_up_signal();
+}

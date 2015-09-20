@@ -32,6 +32,7 @@ extern char usb_hasCommed;
 extern uint8_t report_buffer[4];
 
 void usbBegin();
+void wake_up_signal();
 void usbPollWrapper();
 void usbReportSend();
 

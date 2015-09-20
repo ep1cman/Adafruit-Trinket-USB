@@ -45,6 +45,9 @@ class Trinket_Mouse
 		void begin(); // starts the USB driver, causes re-enumeration
 		void move(signed char x, signed char y, signed char wheel, uint8_t buttonMask); // makes a mouse movement, must be called at least once every 10ms, even if no movement
 		char isConnected(); // checks if USB is connected, 0 if not connected
+		
+		// Wakes a connected PC from sleep
+		void wake();
 };
 
 // an instance that the user can use
